@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tabLayout: TabLayout
     private lateinit var menuLayout: LinearLayout
     private lateinit var deleteBtn: ImageView
-    private lateinit var settingsBtn: ImageView
 
     // Show only the loading page
     private val loadingAdapter = object : FragmentStateAdapter(this) {
@@ -110,15 +109,6 @@ class MainActivity : AppCompatActivity() {
         DeleteSpaceDialog.newInstance().show(supportFragmentManager, null)
     }
 
-    // Called when settings button is clicked
-    private val onSettingsListener = View.OnClickListener {
-        val adapter = viewPager.adapter
-        if (adapter !is ViewPagerAdapter)
-            return@OnClickListener
-        val curUser = adapter.getUserInfo(viewPager.currentItem) ?: return@OnClickListener
-        SpaceSettingsDialogFragment.newInstance(curUser.userId).show(supportFragmentManager, null)
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         finish()
         return true
@@ -134,11 +124,9 @@ class MainActivity : AppCompatActivity() {
         tabLayout = findViewById(R.id.main_tab)
         menuLayout = findViewById(R.id.main_menu)
         deleteBtn = findViewById(R.id.main_delete)
-        settingsBtn = findViewById(R.id.main_settings)
         viewPager.registerOnPageChangeCallback(onPageChangeCallback)
         viewModel.users.observe(this, loadingDoneListener)
         deleteBtn.setOnClickListener(onDeleteListener)
-        settingsBtn.setOnClickListener(onSettingsListener)
         setLoading()
     }
 

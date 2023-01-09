@@ -47,16 +47,6 @@
                 android:transformPivotX="0dp">
 
                 <ImageView
-                    android:id="@+id/main_settings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:clickable="true"
-                    android:src="@drawable/ic_baseline_settings_24"
-                    app:tint="?attr/iconTint" />
-
-                <ImageView
                     android:id="@+id/main_delete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
